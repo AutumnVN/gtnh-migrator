@@ -62,6 +62,7 @@ const CONFIG = [
     ['config/Waila.cfg', 'general', 'waila.cfg.posx', 5000],
     ['config/Waila.cfg', 'general', 'waila.cfg.posy', 100],
     ['config/NEI/client.cfg', 'inventory/history', 'save', true],
+    ['config/NEI/client.cfg', 'inventory/favorites', 'depth', 100],
 ];
 
 const isDir = (p) => { try { return statSync(p).isDirectory(); } catch { return false; } };
