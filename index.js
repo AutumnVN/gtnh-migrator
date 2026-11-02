@@ -61,6 +61,7 @@ const CONFIG = [
     ['config/adventurebackpack.cfg', 'graphics/status', 'Enable Overlay', false],
     ['config/Waila.cfg', 'general', 'waila.cfg.posx', 5000],
     ['config/Waila.cfg', 'general', 'waila.cfg.posy', 100],
+    ['config/NEI/client.cfg', 'inventory/history', 'save', true],
 ];
 
 const isDir = (p) => { try { return statSync(p).isDirectory(); } catch { return false; } };
@@ -104,7 +105,8 @@ const siblingType = (list) => {
 function outline(text) {
     const open = [];
     const out = [];
-    text.split(/\r?\n/).forEach((line, i) => {
+    const lines = text.split(/\r?\n/);
+    lines.forEach((line, i) => {
         const t = line.trim();
         if (!t || t.startsWith('#') || t.startsWith('//')) return;
         if (t === '}' || t === '>' || t === ']') {
@@ -114,7 +116,7 @@ function outline(text) {
         }
         const list = t.match(/^[BSIDFL]:?"?([^"=<]+?)"?\s*<\s*$/);
         if (list) { open.push(list[1].trim()); out.push({ i }); return; }
-        const block = t.match(/^(.+?)\s*\{\s*$/);
+        const block = t.match(/^(.+?)\s*\{\s*$/) || ((lines[i + 1] || '').trim() === '{' ? t.match(/^([^{}=<>]+)$/) : null);
         if (block) { open.push(block[1].trim()); out.push({ i, block: [...open].join('/') }); return; }
         const kv = t.match(/^(?:([BSIDFL]):)?(.*?)=(.*)$/);
         if (kv) out.push({ i, key: QUOTE(kv[2].trim()), raw: kv[2].trim(), type: kv[1], path: [...open, QUOTE(kv[2].trim())].join('/') });
