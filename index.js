@@ -23,6 +23,7 @@ const COPY_DIRS = [
 const COPY_PATHS = [
     'config/InGameInfoXML',
     'config/InGameInfoXML.cfg',
+    'config/craftpresence.json',
     'config/freecam-gtnh.cfg',
     'config/lootgames/games',
     'config/shaders.properties',
