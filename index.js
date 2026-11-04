@@ -35,7 +35,7 @@ const COPY_PATHS = [
     'servers.dat',
 ];
 const DISABLE_MODS = [/^darkerer.*\.jar$/i, /^simpleskinbackport.*\.jar$/i, /^journeymap.*fairplay.*\.jar$/i];
-const ADD_MODS = [/^journeymap-forge.*\.jar$/i, /^skinport.*\.jar$/i];
+const ADD_MODS = [/^journeymap-forge.*\.jar$/i, /^skinport.*\.jar$/i, /^MyCTMLib.*\.jar$/i];
 const CONFIG = [
     ['config/GregTech/Pollution.cfg', 'pollution', 'Activate Pollution', false],
     ['config/GregTech/WorldGeneration.cfg', 'worldgen/general', 'generateUndergroundDirtGen', false],
